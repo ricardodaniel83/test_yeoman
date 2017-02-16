@@ -1,0 +1,83 @@
+
+<style>
+    .mainFoto:hover{
+        filter: grayscale(100%);
+    }
+</style>
+
+<div class="col-md-4">
+    <div class="panel panel-default">                            
+        <div class="panel-body panel-body-image">
+            <img class="mainFoto" ng-src="{{perfil.mainFoto}}" style="max-height: 200px; min-height: 200px">
+            <a href="#" class="panel-body-inform">
+            <span class="fa fa-user"></span>
+            </a>
+        </div>
+        <div class="panel-body">
+            <h3 style="text-align: center;">{{perfil.data._profile.full_name}}</h3>
+            <h4 style="text-align: center;">@{{perfil.data.username}}</h4>
+            <br>
+            <div style="display: flex; justify-content: space-between">          
+                <div>
+                    <h4 style="text-align: center;">0</h4>
+                    <p>Seguiendo</p>
+                </div>
+                <div>
+                    <h4 style="text-align: center;">0</h4>
+                    <p>Seguidores</p>
+                </div>
+                <div>
+                    <h4 style="text-align: center;">{{ perfil.data._profile.points }}</h4>
+                    <p>Puntos</p>
+                </div>
+                <div>
+                    <h4 style="text-align: center;">{{perfil.totalNegocios}}</h4>
+                    <p>Mis lugares</p>
+                </div>                                         
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+        <div class="col-md-8">
+            <!-- NEWS WIDGET -->
+            <div class="panel panel-default">
+                <div class="panel-heading ui-draggable-handle">
+                    <h3 class="panel-title">Mi Perfil</h3>         
+                    <ul class="panel-controls">
+                        <li><a href="#" class="control-danger"><span class="fa fa-pencil"></span></a></li>
+                    </ul>
+                </div>
+                <div class="panel-body" style="height: auto;"><div id="mCSB_4" class="mCS-light" tabindex="0"><div style="position: relative; top: 0px; left: 0px;">                               
+                    <h4>Email</h4>
+                    <p>
+                        {{ perfil.data.email }}
+                    </p>
+                    <h4>Teléfono</h4>
+                    <p>
+                        {{ perfil.data._profile.cell_number }}
+                    </p>
+                    <h4>Fecha de nacimiento</h4>
+                    <p>
+                        {{ perfil.data._profile.birthday | date:"dd/MM/yyyy" }}
+                    </p>                                   
+                    <h4>Genero</h4>
+                    <p>
+                        {{ perfil.data._profile.gender }}
+                    </p>
+                    <h4>Intereses</h4>
+                    <p>
+                    <ul class="list-tags">
+                     <li><a style="font-size: 1.2rem; background: orange; color: white;" ><span class="fa fa-tag"></span> Comida </a></li>
+                     <li><a style="font-size: 1.2rem; background: orange; color: white;"><span class="fa fa-tag"></span> Restaurantes </a></li>
+                     <li><a style="font-size: 1.2rem; background: orange; color: white;"><span class="fa fa-tag"></span> Musica </a></li>
+                    </ul>
+                    </p>                                    
+                </div><div style="display: block;"><div><div class="mCSB_dragger" style="position: absolute; min-height: 30px; display: block; height: 170px; max-height: 190px; top: 30px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+            </div>
+            <!-- END NEWS WIDGET -->
+
+        </div>

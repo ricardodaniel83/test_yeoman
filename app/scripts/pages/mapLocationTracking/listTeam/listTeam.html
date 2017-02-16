@@ -1,0 +1,50 @@
+<div class="col-md-12">
+  <div class="panel panel-default tabs">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <div class="input-group">
+           <span class="input-group-addon">
+             <span class="fa fa-search"></span>
+           </span>
+           <input class="form-control" placeholder="Buscar Team"  type="text" ng-model="searchList">
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+<div class="col-md-12">
+     <div class="col-sm-4 col-md-4" ng-repeat="item in listTeam.listTeams | filter: searchList">
+          <div class="panel panel-default">
+            <div class="panel-heading ui-draggable-handle">
+                <img ng-src="{{item.principalUrl}}" class="panel-title-image">
+                <h3 class="panel-title">{{item.name}}</h3>
+                <ul class="panel-controls">
+                    <li>
+                        <span class="badge badge-success" style="background-color:#EDAE02">{{item.points}}</span>
+                        <span class="badge badge-success">{{item.totalVerify}}</span>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="panel-body">
+                <button type="button" ng-click="listTeam.viewPlaceTeam(item)" class="btn btn-warning btn-block ">
+                  <span class="fa fa-edit"></span> Ver
+                </button>
+            </div>
+            <div class="panel-body list-group list-group-contacts">
+              <a class="list-group-item" href="#" ng-repeat="userTeam in item.users">
+
+                  <img class="pull-left" ng-src="{{userTeam.principalUrl}}" >
+                  <span class="contacts-title">{{userTeam.username}}</span>
+                  <p>Puntos: <strong>{{userTeam._profile.points}}</strong></p>
+                  <div class="list-group-controls">
+                      <span class="badge badge-success">{{userTeam._profile.verify_count}}</span>
+                      <span class="badge badge-danger">{{userTeam._profile.created_count}}</span>
+                  </div>
+              </a>
+            </div>
+          </div>
+     </div>
+
+</div>

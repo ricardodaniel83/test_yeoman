@@ -1,0 +1,54 @@
+<div class="col-md-12">
+  <div class="panel panel-default tabs">
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="col-sm-6 col-md-4">
+              <div class="form-group">
+                <label class="col-sm-4 col-md-3 control-label">Categoría:</label>
+                <div class="col-sm-8 col-md-9">
+                  <select class="form-control" ng-model="listTeamCategory.selectCategory" ng-options="item.name for item in listTeamCategory.listCategory  track by item.id" ng-change="listTeamCategory.loadUserCategory()" >  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <div class="input-group">
+                 <span class="input-group-addon">
+                   <span class="fa fa-search"></span>
+                 </span>
+                 <input class="form-control" placeholder="Buscar"  type="text" ng-model="searchList">
+              </div>
+            </div>
+        </form>
+
+      </div>
+  </div>
+</div>
+
+
+<div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table">
+              <thead>
+                <th>Id</th>
+                 <th>Username</th>
+                 <th>Email</th>
+                 <th>Equipo</th>
+                 <th>Aprobados</th>
+                 <th>Places</th>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="item in listTeamCategory.userTeam | filter:searchList | orderBy:'-verificados'">
+                     <td>{{item.id}}</td>
+                     <td>{{item.username}}</td>
+                     <td>{{item.email}}</td>
+                     <td>{{item.teamName}}</td>
+                     <td>{{item.verificados}}</td>
+                     <td>{{item.numPlace}}</td>
+                  </tr>
+              </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>

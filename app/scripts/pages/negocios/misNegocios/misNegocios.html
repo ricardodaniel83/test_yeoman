@@ -1,0 +1,142 @@
+
+                        <div class="col-md-12">
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <p>Utilice la barra de busqueda para encontrar su negocio.</p>
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <span class="fa fa-search"></span>
+                                                    </div>
+                                                    <input type="text" ng-model="misNegocios.filtro" class="form-control" placeholder="Nombre del negocio"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        
+                        
+                        <div class="col-md-3" ng-repeat="negocio in misNegocios.listaNegocios | filter : misNegocios.filtro">
+                            <!-- CONTACT ITEM -->
+                            <div class="panel panel-default">
+                                <div class="panel-body profile">
+
+
+                                    <div class="profile-image">
+                                        <img ng-src='{{negocio.urlPortada}} '/>
+                                    </div>
+                                    <div class="profile-data">
+                                        <div class="profile-data-name">{{ negocio.name }}</div>
+                                        <div class="profile-data-title">{{ negocio.categories[0].name}}</div>
+                                    </div>
+                                    <div class="profile-controls">
+                                        <a class="profile-control-left"><span class="{{ negocio.categories[0].icon}}"></span></a>
+                                        <a ng-click="misNegocios.verPlace(negocio.id)" class="profile-control-right"><span class="ion ion-eye"></span></a>
+                                    </div>
+                                </div>                                
+                                <div class="panel-body">                                    
+                                    <div class="contact-info">
+                                        <p><small>Ultima modificación</small><br/>{{ negocio.lastUpdated | date : "dd/MM/yy h:mm a " }}</p>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <!-- END CONTACT ITEM -->
+                        </div>
+
+                        <div class="col-md-12">
+                                                <div class="row">
+                        <div class="col-md-4">
+                            
+                            <!-- START USERS ACTIVITY BLOCK -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title-box">
+                                        <h3>VISITAS</h3>
+                                        <span>Visitas al perfil por local</span>
+                                    </div>                                                                    
+                                </div>                                
+                                <div class="panel-body padding-0">
+                                    <div class="chart-holder" id="morris-bar" style="height: 200px;"></div>
+                                </div>                                    
+                            </div>
+                            <!-- END USERS ACTIVITY BLOCK -->
+                            
+                        </div>
+                        <div class="col-md-4">
+                            
+                            <!-- START VISITORS BLOCK -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title-box">
+                                        <h3>PERFIL DE VISITANTES</h3>
+                                        <span>Edad de los visitantes</span>
+                                    </div>
+                                </div>
+                                <div class="panel-body padding-0">
+                                    <div class="chart-holder" id="morris-donut" style="height: 200px;"></div>
+                                </div>
+                            </div>
+                            <!-- END VISITORS BLOCK -->
+                            
+                        </div>
+
+					<div class="col-md-4">
+                            
+                            <!-- START SALES & EVENTS BLOCK -->
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title-box">
+                                        <h3>RECOMENDACIONES</h3>
+                                        <span>Recomendaciones por local</span>
+                                    </div>
+                                </div>
+                                <div class="panel-body padding-0">
+                                    <div class="chart-holder" id="morris-line" style="height: 200px;"></div>
+                                </div>
+                            </div>
+                            <!-- END SALES & EVENTS BLOCK -->
+                            
+                        </div>
+                    </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading ui-draggable-handle">
+                                    <h3 class="panel-title">Tabla de comparación</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p> En un futuro muy muy cercano aqui se mostraran datos y estadisticas de los negocios <i class="fa fa-rebel"></i> </p>
+                                </div>
+                                <div class="panel-body panel-body-table">                                
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre del Negocio</th>
+                                                <th>Datos 1</th>
+                                                <th>Categoria</th>
+                                                <th>Ultima Actualización</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="negocio in misNegocios.listaNegocios">
+                                                <td>{{ negocio.name }}</td>
+                                                <td>0.01</td>
+                                                <td>{{ negocio.categories[0].name}}</td>
+                                                <td>{{ negocio.lastUpdated | date : "dd/MM/yy h:mm a " }}</td>
+                                            </tr>
+                                           
+                                        </tbody>
+                                    </table>                                
+                                </div>
+                            </div>
+                        </div>

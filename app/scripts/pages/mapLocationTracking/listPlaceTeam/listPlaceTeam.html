@@ -1,0 +1,116 @@
+<!-- Css de la vista -->
+<style>
+    .name-user{
+      color:#EDAE02;
+    }
+    .color-aprobado{
+        background-color:#FFBF00;
+        color:#fff;
+    }
+    .color-aprobado .name-user{
+      color:#fff;
+    }
+</style>
+
+
+<!-- Dibujamos los filtros -->
+<div class="col-sm-12">
+   <div class="panel panel-default">
+     <div class="panel-heading ui-draggable-handle">
+         <div class="col-sm-5 col-md-3">
+           <img class="panel-title-image" ng-src="{{listPlaceTeam.params.obj.principalUrl}}" >
+           <h3>{{listPlaceTeam.params.obj.name}}</h3>
+         </div>
+         <div class="col-sm-3 col-md-3">
+           <span class="badge badge-success" style="background-color:#EDAE02">{{listPlaceTeam.params.obj.points}}</span>
+           <span class="badge badge-success">{{listPlaceTeam.params.obj.totalVerify}}</span>
+         </div>
+       </div>
+       <div class="panel-body">
+         <form class="form-horizontal">
+           <div class="col-md-3">
+             <div class="form-group">
+               <label class="col-md-2 control-label">Tipo:</label>
+               <div class="col-md-10">
+                 <select class="form-control" ng-model="listPlaceTeam.selctVerify" ng-options="item.name for item in listPlaceTeam.listVerify  track by item.id" >  </select>
+               </div>
+             </div>
+           </div>
+           <div class="col-md-7">
+              <ul style="margin:0px; padding:0px">
+                <li ng-repeat="userTeam in listPlaceTeam.users" class="col-md-4" style="margin:0px; padding:0px">
+                    <a class="list-group-item"   style="padding:2px" ng-click="listPlaceTeam.filterPlaceUser(userTeam.user)">
+                      <img class="pull-left" ng-src="{{userTeam.user.principalUrl}}" width="30" height="30" style="margin-right:3px">
+                      <span class="contacts-title">{{userTeam.user.username}}</span>
+                      <p>
+                        <span class="badge badge-success">{{userTeam.verificados}}</span>
+                        <span class="badge badge-danger">{{userTeam.numPlace}}</span>
+                      </p>
+                      <div class="list-group-controls">
+                          <span class="badge badge-success">{{userTeam.user._profile.verify_count}}</span>
+                          <span class="badge badge-danger">{{userTeam.user._profile.created_count}}</span>
+                      </div>
+                    </a>
+                </li>
+              </ul>
+           </div>
+           <div class="col-md-2">
+                 <div class="input-group">
+                    <span class="input-group-addon">
+                      <span class="fa fa-search"></span>
+                    </span>
+                    <input class="form-control" placeholder="Buscar Place"  type="text" ng-model="listPlaceTeam.filtro">
+                 </div>
+           </div>
+         </form>
+     </div>
+   </div>
+</div>
+
+<!-- Dibujamos los  Place asignados -->
+<div class="row">
+  <div class="col-sm-6 col-md-3" ng-repeat="itemPlace in listPlaceTeam.listPlace | filter:{place:{statusId:listPlaceTeam.selctVerify.id}} | filter:listPlaceTeam.filtro | filter:{userId:listPlaceTeam.selectUser}">
+    <div class="panel panel-default">
+      <div class="panel-body profile">
+          <div class="profile-image">
+            <!-- IMAGEN -->
+            <img ng-src="{{itemPlace.place.principalUrl}}" width="100px" height="100px">
+          </div>
+          <div class="profile-data">
+            <div class="profile-data-name ng-binding">{{ itemPlace.place.name }}</div>
+            <div class="profile-data-title ng-binding">{{ itemPlace.place.categories[0].name}}</div>
+          </div>
+          <div class="profile-controls">
+              <a class="profile-control-left">
+                <span class="{{itemPlace.place.categories[0].icon}}"></span>
+              </a>
+              <a class="profile-control-right" ng-click="listPlaceTeam.viewPlace(itemPlace)">
+                <span class="ion ion-eye"></span>
+              </a>
+          </div>
+
+      </div>
+      <div class="panel-body {{(itemPlace.place.statusId =='00') ? '' :'color-aprobado'}}" >
+        <div class="contact-info">
+          <div class=" col-sm-8 col-md-8" class="color-aprobado">
+            <p class="ng-binding">
+            <span class="name-user"><strong>{{ itemPlace.place.user.username}}</strong></span>
+            <br>
+            <small>Creado</small>
+            <br>
+            {{ itemPlace.place.created | date : "dd/MM/yy h:mm a " }}
+            <br>
+            <small>Ultima modificación</small>
+            <br>
+            {{ itemPlace.place.lastUpdated | date : "dd/MM/yy h:mm a " }}
+            </p>
+          </div>
+          <div class="col-sm-4 col-md-4" >
+            <button type="button" name="button" class="btn btn btn-success" ng-show="itemPlace.place.statusId =='00'" ng-click="listPlaceTeam.verifyPlace(itemPlace)">Aprobar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

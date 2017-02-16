@@ -2,16 +2,37 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Urbamapp - Cliente</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+     <meta content="application/json">
+    <meta http-equiv="access-control-allow-origin" content="*">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="http://urbamapp.com/favicon.ico" type="image/x-icon" />
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <!--  <link rel="stylesheet" type="text/css" id="theme" href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,500,600,700&subset=latin,latin-ext"/>-->
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/jquery/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/fontawesome/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/summernote/summernote.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/codemirror/codemirror.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/nvd3/nv.d3.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/mcustomscrollbar/jquery.mCustomScrollbar.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/fullcalendar/fullcalendar.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/blueimp/blueimp-gallery.min.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/rickshaw/rickshaw.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/dropzone/dropzone.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/animate/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="styles/theme/theme-default.css"/>
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
@@ -20,47 +41,10 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">testAngular</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+    <!--  <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
@@ -68,7 +52,7 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
-    </script>
+    </script> -->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -81,12 +65,88 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+        <!-- API Services -->
+        <script src="scripts/core/services/api_services.js"></script>
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <script type="text/javascript" src="scripts/core/services/urbamapp.min-1.0.0.js"></script>
+
+
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/pages/pages.module.js"></script>
+        <script src="scripts/core/services/services.module.js"></script>
+        <script src="scripts/core/modelos/modelos.module.js"></script>
+        <script src="scripts/core/modelos/userModule.js"></script>
+        <script src="scripts/core/modelos/placeModel.js"></script>
+        <script src="scripts/core/helpers/helpers.module.js"></script>
+        <script src="scripts/core/helpers/helpers.js"></script>
+
+        <!-- Servicios -->
+        <script src="scripts/core/services/apiService.js"></script>
+        <script src="scripts/core/services/userService.js"></script>
+        <script src="scripts/core/services/placeService.js"></script>
+        <script src="scripts/core/services/categoryService.js"></script>
+        <script src="scripts/core/services/mapaService.js"></script>
+
+        <!-- Controladores -->
+        <script src="scripts/core/directivas/sideMenu.directive.js"></script>
+        <script src="scripts/core/directivas/top-bar.directive.js"></script>
+        <script src="scripts/pages/login/login.controller.js"></script>
+        <script src="scripts/pages/layout/layout.controller.js"></script>
+        <script src="scripts/pages/main/main.controller.js"></script>
+        <script src="scripts/pages/negocios/misNegocios/misNegocios.controller.js"></script>
+        <script src="scripts/pages/negocios/detallesNegocio/detallesNegocio.controller.js"></script>
+        <script src="scripts/pages/negocios/editarNegocio/editarNegocio.controller.js"></script>
+        <script src="scripts/pages/negocios/editarNegocio/editarGaleria.controller.js"></script>
+        <script src="scripts/pages/negocios/eventos/eventos.controller.js"></script>
+        <script src="scripts/pages/estadisticas/estadisticas.controller.js"></script>
+        <script src="scripts/pages/perfil/perfil.controller.js"></script>
+        <!-- Seguimiento de lugares mapiados -->
+        <script src="scripts/pages/mapLocationTracking/listTeam/listTeam.controller.js"></script>
+        <script src="scripts/pages/mapLocationTracking/listPlaceTeam/listPlaceTeam.controller.js"></script>
+        <script src="scripts/pages/negocios/detallesNegocio/viewPlacePopup.controller.js"></script>
+        <script src="scripts/pages/negocios/editarNegocio/editPlacePopup.controller.js"></script>
+        <script src="scripts/pages/mapLocationTracking/listPlaceNoTeam/listPlaceNoTeam.controller.js"></script>
+        <script src="scripts/pages/mapLocationTracking/listTeamCategory/listTeamCategory.controller.js"></script>
+        <script src="scripts/pages/mapLocationTracking/listTeamCategory/listTeamCategory.controller.js"></script>
+        <script src="scripts/pages/mapLocationTracking/listPlaceNoTeam/viewModalPlaceUser.controller.js"></script>
+        <!-- Helper -->
+        <script src="scripts/core/helpers/helpers.module.js"></script>
+        <script src="scripts/core/helpers/helpers.js"></script>
+
+        <!--
+        <script type="text/javascript" src="scripts/vendor/settings.js"></script>
+        <script type="text/javascript" src="scripts/vendor/plugins.js"></script>
+        <script type="text/javascript" src="scripts/vendor/actions.js"></script>
+      -->
+
+
+        <!-- START SCRIPTS -->
+
+        <!-- START THIS PAGE PLUGINS-->
+        <!--
+        <script type='text/javascript' src="scripts/vendor/plugins/icheck/icheck.min.js"></script>
+        <script type="text/javascript" src="scripts/vendor/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+        <script type="text/javascript" src="scripts/vendor/plugins/scrolltotop/scrolltopcontrol.js"></script>
+
+        <script type="text/javascript" src="scripts/vendor/plugins/morris/raphael-min.js"></script>
+        <script type="text/javascript" src="scripts/vendor/plugins/morris/morris.min.js"></script>
+        <script type='text/javascript' src='scripts/vendor/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
+        <script type='text/javascript' src='scripts/vendor/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+        <script type='text/javascript' src='scripts/vendor/plugins/bootstrap/bootstrap-datepicker.js'></script>
+
+        <script type="text/javascript" src="scripts/vendor/plugins/moment.min.js"></script>
+        <script type="text/javascript" src="scripts/vendor/plugins/daterangepicker/daterangepicker.js"></script>
+         -->
+
+
         <!-- endbuild -->
 </body>
 </html>

@@ -1,0 +1,32 @@
+<div class="content-frame">
+
+                    <!-- START CONTENT FRAME TOP -->
+                    <div class="content-frame-top">
+                        <div class="page-title">
+                            <h2><span class="fa fa-image"></span> Galería de Fotos</h2>
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-primary"><span class="fa fa-upload"></span> Subir Foto</button>
+                            <button class="btn btn-default content-frame-right-toggle"><span class="fa fa-bars"></span></button>
+                        </div>
+                    </div>
+
+                    <!-- START CONTENT FRAME BODY -->
+                    <div>
+
+                        <div class="gallery" id="links">
+
+                            <a ng-repeat="foto in editarGaleria.fotos" class="gallery-item" data-gallery>
+                                <div class="image">
+                                    <img ng-src="{{foto}}" style="max-width: 400px; min-width: 400px; max-height: 250px; min-height: 250px;"/>
+                                    <ul class="gallery-item-controls">
+                                        <li><label class="check"><input type="checkbox" class="icheckbox"/></label></li>
+                                        <li><span class="gallery-item-remove"><i class="fa fa-times"></i></span></li>
+                                    </ul>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- END CONTENT FRAME BODY -->
+                </div>

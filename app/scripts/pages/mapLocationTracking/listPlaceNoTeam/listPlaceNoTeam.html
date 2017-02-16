@@ -1,0 +1,40 @@
+<div class="col-md-12">
+  <div class="panel panel-default tabs">
+    <div class="panel-body">
+      <div class="col-md-6">
+        <div class="input-group">
+           <span class="input-group-addon">
+             <span class="fa fa-search"></span>
+           </span>
+           <input class="form-control" placeholder="Buscar User"  type="text" ng-model="searchList">
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+<div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <th>Id</th>
+                    <th>Usename</th>
+                    <th>Email</th>
+                    <th>Creado</th>
+                    <th>Ultima modificacion</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in listNoTeam.user | filter: searchList">
+                       <td>{{item.id}} </td>
+                       <td>{{item.username}} </td>
+                       <td>{{item.email}} </td>
+                       <td>{{item.created | date : "dd/MM/yy h:mm a "}} </td>
+                       <td>{{item.lastUpdated | date : "dd/MM/yy h:mm a "}} </td>
+                       <td> <button type="button" name="button" class="btn btn-success" ng-click="listNoTeam.modalViewPlace(item)">Ver Place</button></td>
+                    </tr>
+                </tbody>
+            </table>
+      </div>
+    </div>
+</div>
